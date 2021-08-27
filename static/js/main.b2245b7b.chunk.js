@@ -1,0 +1,2 @@
+(this.webpackJsonpbalances=this.webpackJsonpbalances||[]).push([[0],{21:function(e,n,c){},30:function(e,n,c){"use strict";c.r(n);var t=c(0),a=c.n(t),s=c(13),r=c.n(s),i=c(14),o=c(1),b=c(6);function j(){return Object(b.jsx)("div",{children:"home"})}c(21);function d(){return Object(b.jsx)(i.a,{basename:"/balances",children:Object(b.jsx)(o.c,{children:Object(b.jsx)(o.a,{path:"/",exact:!0,component:j})})})}r.a.render(Object(b.jsx)(a.a.StrictMode,{children:Object(b.jsx)(d,{})}),document.getElementById("root"))}},[[30,1,2]]]);
+//# sourceMappingURL=main.b2245b7b.chunk.js.map
