@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Balances/static/css/main.cd91d678.chunk.css",
+    "main.css": "/Balances/static/css/main.601cec39.chunk.css",
     "main.js": "/Balances/static/js/main.37c49ad5.chunk.js",
     "main.js.map": "/Balances/static/js/main.37c49ad5.chunk.js.map",
     "runtime-main.js": "/Balances/static/js/runtime-main.646df4b4.js",
@@ -10,7 +10,7 @@
     "static/js/2.f5926d5d.chunk.js.map": "/Balances/static/js/2.f5926d5d.chunk.js.map",
     "index.html": "/Balances/index.html",
     "static/css/2.7785af68.chunk.css.map": "/Balances/static/css/2.7785af68.chunk.css.map",
-    "static/css/main.cd91d678.chunk.css.map": "/Balances/static/css/main.cd91d678.chunk.css.map",
+    "static/css/main.601cec39.chunk.css.map": "/Balances/static/css/main.601cec39.chunk.css.map",
     "static/js/2.f5926d5d.chunk.js.LICENSE.txt": "/Balances/static/js/2.f5926d5d.chunk.js.LICENSE.txt",
     "static/media/argentine.ef008e9a.png": "/Balances/static/media/argentine.ef008e9a.png",
     "static/media/bnb.77899e05.png": "/Balances/static/media/bnb.77899e05.png",
@@ -23,7 +23,7 @@
     "static/js/runtime-main.646df4b4.js",
     "static/css/2.7785af68.chunk.css",
     "static/js/2.f5926d5d.chunk.js",
-    "static/css/main.cd91d678.chunk.css",
+    "static/css/main.601cec39.chunk.css",
     "static/js/main.37c49ad5.chunk.js"
   ]
 }
