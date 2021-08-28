@@ -1,29 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Components
-import Btc from "../../assets/btc.png";
-import Eth from "../../assets/eth.png";
-import Mdx from "../../assets/mdx.png";
+import Btc from "../../assets/tokens/btc.png";
+import Eth from "../../assets/tokens/eth.png";
+import Mdx from "../../assets/tokens/mdx.png";
 
 // Styles
 
 const getTokenPrice = (setTokenPrice, token) => {
 	let alt;
-	if (token !== "mdx") {
+	if (token !== "MDX") {
 		alt = true;
 	} else {
 		alt = false;
 	}
 
-	fetch(`https://api.huobi.pro/market/trade?symbol=${token}usdt`)
+	fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${token}USDT`)
 		.then((res) => {
 			return res.json();
 		})
 		.then((data) => {
 			if (alt) {
-				setTokenPrice(Math.round(data.tick.data[0].price));
+				setTokenPrice(Math.round(data.price));
 			} else {
-				setTokenPrice(data.tick.data[0].price);
+				setTokenPrice(data.price);
 			}
 		})
 		.catch((err) => {
@@ -33,26 +33,28 @@ const getTokenPrice = (setTokenPrice, token) => {
 
 export default function CryptoBubble({ token }) {
 	const [tokenPrice, setTokenPrice] = useState(0);
-	getTokenPrice(setTokenPrice, token);
+	const [cryptoImg, setCryptoImg] = useState(null);
 
-	setTimeout(() => {
+	useEffect(() => {
+		//* Initiliaze the bubble token price and then update it every 30 seconds
 		getTokenPrice(setTokenPrice, token);
-	}, 30000);
+		setTimeout(() => {
+			getTokenPrice(setTokenPrice, token);
+		}, 30000);
 
-	const tokensImgs = [Btc, Eth, Mdx];
-	let cryptoImg = null;
-
-	tokensImgs.forEach((img) => {
-		if (img.includes(token)) {
-			cryptoImg = img;
-		}
-	});
+		// Get the apropiate image for the token
+		const tokensImgs = [Btc, Eth, Mdx];
+		tokensImgs.forEach((img) => {
+			if (img.includes(token.toLowerCase())) {
+				setCryptoImg(img);
+			}
+		});
+	}, [token]);
 
 	return (
 		<div className="crypto-bubble">
 			<div>
-				<img src={cryptoImg} alt="" />
-				<p>${tokenPrice}</p>
+				<img src={cryptoImg} alt="" />${tokenPrice}
 			</div>
 		</div>
 	);

@@ -1,3 +1,137 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+main {
+  padding: 15px;
+  overflow: auto;
+  overflow-x: hidden;
+  z-index: 10;
+}
+main .general-graph-container {
+  width: 100%;
+  height: fit-content;
+  margin: 0;
+}
+main .general-graph-container .principal-sections-container {
+  padding: 15px;
+  height: 350px;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content {
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.563);
+  box-shadow: 0px 3px 20px 0px rgba(92, 97, 97, 0.1);
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container {
+  width: 100%;
+  height: calc(50% - 15px);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.563);
+  box-shadow: 0px 3px 20px 0px rgba(92, 97, 97, 0.1);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: calc(100%);
+  padding: 15px;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 {
+  text-align: left;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .profit-btn,
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .total-btn {
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .profit-btn:hover,
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .total-btn:hover {
+  color: #686868;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .profit-btn:not(.profit-btn-active),
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .total-btn:not(.total-btn-active) {
+  color: #d07a0b;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .profit-btn:not(.profit-btn-active):hover,
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .total-btn:not(.total-btn-active):hover {
+  color: #ee992a;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .profit-btn-active,
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .total-btn-active {
+  color: #009d47;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .profit-btn-active:hover,
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content h6 .total-btn-active:hover {
+  color: #0bb155;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content .money-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content .money-container .national-currency-container {
+  width: 50%;
+  height: 100%;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content .money-container .national-currency-container .total-price-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100% !important;
+  height: 100%;
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content .money-container .national-currency-container .total-price-container .icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  border-radius: 100%;
+  filter: drop-shadow(0px 1px 3px #00000033);
+}
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content .money-container .national-currency-container .total-price-container .icon-container .icon-flag {
+  height: 100%;
+}
+main .general-graph-container .principal-sections-container .principal-sections-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  box-shadow: none;
+}
+main .general-graph-container .principal-sections-container .section-graph {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+main .general-graph-container .principal-sections-container .section-graph div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+}
+main .general-graph-container .principal-sections-container .section-graph div svg {
+  width: 100% !important;
+}
+main .general-graph-container .principal-sections-container .section-graph div svg .apexcharts-title-text {
+  fill: #575757;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: bolder;
+  font-size: 16px;
+  line-height: 22px;
+  margin-left: 10px !important;
+}
 
 /*# sourceMappingURL=home.css.map */

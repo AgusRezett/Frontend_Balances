@@ -55,12 +55,6 @@ export default function Sidenavbar() {
 							<NavLink href="/geo" eventKey="3-1">
 								Customize
 							</NavLink>
-							<NavLink href="/user-group" eventKey="3-2">
-								Devices
-							</NavLink>
-							<NavLink href="/user-group" eventKey="3-3">
-								Loyalty
-							</NavLink>
 						</Dropdown>
 						{/* <Dropdown
 							placement="rightStart"

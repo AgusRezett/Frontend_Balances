@@ -19,12 +19,12 @@ export default function App() {
 		<div className="dashboard-app">
 			<Router basename="/Balances">
 				<Sidenavbar />
-				<main>
+				<section>
 					<Topnavbar />
 					<Switch>
 						<Route path="/" exact component={Home} />
 					</Switch>
-				</main>
+				</section>
 				{/* <Footer /> */}
 			</Router>
 		</div>

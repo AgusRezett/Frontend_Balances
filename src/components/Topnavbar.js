@@ -8,10 +8,10 @@ import "../css/navbar.css";
 
 export default function Topnavbar() {
 	return (
-		<section className="topnavbar">
-			<Bubble token="btc" />
-			<Bubble token="eth" />
-			<Bubble token="mdx" />
-		</section>
+		<div className="topnavbar">
+			<Bubble token="BTC" />
+			<Bubble token="ETH" />
+			<Bubble token="MDX" />
+		</div>
 	);
 }

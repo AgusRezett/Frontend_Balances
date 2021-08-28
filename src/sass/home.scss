@@ -1,0 +1,141 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+$sections-border-radius: 10px;
+$sections-box-shadow: 0px 3px 20px 0px rgb(92 97 97 / 10%);
+
+main {
+	padding: 15px;
+	overflow: auto;
+	overflow-x: hidden;
+	z-index: 10;
+
+	.general-graph-container {
+		width: 100%;
+		height: fit-content;
+		margin: 0;
+
+		.principal-sections-container {
+			padding: 15px;
+			height: 350px;
+
+			.principal-sections-content {
+				height: 100%;
+				border-radius: $sections-border-radius;
+				background-color: $white-background-content-sections;
+				box-shadow: $sections-box-shadow;
+
+				.secondary-sections-container {
+					width: 100%;
+					height: calc(50% - 15px);
+					border-radius: $sections-border-radius;
+					background-color: $white-background-content-sections;
+					box-shadow: $sections-box-shadow;
+
+					background-position: center center;
+					background-repeat: no-repeat;
+					background-size: cover;
+
+					.secondary-sections-content {
+						@include displayFlex(column, center, null);
+						width: 100%;
+						height: calc(100%);
+						padding: 15px;
+
+						h6 {
+							text-align: left;
+
+							.profit-btn,
+							.total-btn {
+								cursor: pointer;
+								transition: all 150ms ease-in-out;
+
+								&:hover {
+									color: $text-color--hover;
+								}
+							}
+
+							.profit-btn:not(.profit-btn-active),
+							.total-btn:not(.total-btn-active) {
+								color: $text-advise-color;
+
+								&:hover {
+									color: $text-advise-color--hover;
+								}
+							}
+
+							.profit-btn-active,
+							.total-btn-active {
+								color: $text-confirm-color;
+
+								&:hover {
+									color: $text-confirm-color--hover;
+								}
+							}
+						}
+
+						.money-container {
+							@include displayFlex(row, center, center);
+							width: 100%;
+							height: 100%;
+
+							.national-currency-container {
+								width: 50%;
+								height: 100%;
+
+								.total-price-container {
+									@include displayFlex(row-reverse, space-evenly, center);
+									width: 100% !important;
+									height: 100%;
+
+									.icon-container {
+										@include displayFlex(row, center, center);
+										width: 45px;
+										height: 45px;
+										overflow: hidden;
+										border-radius: 100%;
+										filter: drop-shadow(0px 1px 3px #00000033);
+
+										.icon-flag {
+											height: 100%;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.principal-sections-column {
+				@include displayFlex(column, space-between, center);
+				background-color: transparent;
+				box-shadow: none;
+			}
+
+			.section-graph {
+				@include displayFlex(column, center, center);
+				width: 100%;
+
+				div {
+					@include displayFlex(column, center, center);
+					width: 100% !important;
+
+					svg {
+						width: 100% !important;
+
+						.apexcharts-title-text {
+							fill: $text-color;
+							font-family: "Poppins", sans-serif !important;
+							font-weight: bolder;
+							font-size: 16px;
+							line-height: 22px;
+							margin-left: 10px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
