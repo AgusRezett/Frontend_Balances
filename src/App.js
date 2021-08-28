@@ -1,31 +1,32 @@
-import React /* , { useState } */ from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-//Rutas de Páginas
+// Pages routes
 import Home from "./pages/Home";
 
-//Componenetes
-/* import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"; */
+// Components
+import Topnavbar from "./components/Topnavbar";
+import Sidenavbar from "./components/Sidenavbar";
+/* import Footer from "./components/Footer"; */
 
-//Estilos
+// Styles
+import "./css/generalStyles.css";
 import "./css/home.css";
+import "rsuite/dist/styles/rsuite-default.css";
 
 export default function App() {
-	// Estado para renderizar o no la barra de navegación y el footer
-	/* const [renderFooNav, setRenderFooNav] = useState(true); */
-
 	return (
-		<Router basename="/Balances">
-			<Link to="/contacto">contacto</Link>
-			<Link to="/">home</Link>
-			{/* <Navbar /> */}
-			<Switch>
-				{/* <Route path="/contacto" component={Contacto} />
-				<Route path="/faq" component={Faq} /> */}
-				<Route path="/" exact component={Home} />
-			</Switch>
-			{/* <Footer /> */}
-		</Router>
+		<div className="dashboard-app">
+			<Router basename="/Balances">
+				<Sidenavbar />
+				<main>
+					<Topnavbar />
+					<Switch>
+						<Route path="/" exact component={Home} />
+					</Switch>
+				</main>
+				{/* <Footer /> */}
+			</Router>
+		</div>
 	);
 }

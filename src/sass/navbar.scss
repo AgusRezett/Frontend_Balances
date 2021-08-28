@@ -1,0 +1,92 @@
+@import "colors.scss";
+@import "fonts.scss";
+@import "mixins.scss";
+
+.rs-sidenav {
+	$nav-width: 250px;
+}
+
+.rs-sidenav:not(.rs-sidenav-collapse-in) {
+	$nav-width: 56px !important;
+}
+
+#sidenavbar-container {
+	//width: $nav-width;
+	color: #fff;
+	div {
+		height: 100%;
+		background-color: $primary-color;
+
+		div {
+			div {
+				transition: all 100ms ease-in-out;
+				ul {
+					.rs-btn-toggle {
+						min-width: 40px;
+						margin: 7px;
+						transition: all 150ms ease-in-out;
+					}
+
+					.rs-nav-item {
+						height: 50px;
+
+						& > a > div:hover {
+							background-color: $primary-color--hover;
+						}
+
+						a {
+							text-decoration: none;
+							color: #dadada;
+							transition: all 50ms ease-in-out;
+
+							&:hover {
+								color: #1675e0;
+							}
+
+							div {
+								@include displayFlex(row, flex-start, center);
+								white-space: nowrap;
+
+								i {
+									top: auto;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.topnavbar {
+	@include displayFlex(row, flex-start, center);
+	width: 100%;
+	height: 60px;
+	top: 0;
+	background-color: $primary-color-press;
+	transition: all 100ms ease-in-out;
+
+	.crypto-bubble {
+		width: fit-content;
+		height: 70%;
+		background-color: $primary-color--dark;
+		border-radius: 50px;
+		margin-left: 20px;
+
+		div {
+			width: 100%;
+			height: 100%;
+			@include displayFlex(row, space-evenly, center);
+
+			img {
+				height: 70%;
+				padding-left: 10px;
+			}
+			p {
+				color: #fff;
+				padding: 0px 10px;
+			}
+		}
+	}
+}
