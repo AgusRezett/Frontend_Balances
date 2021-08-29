@@ -118,7 +118,7 @@ main {
 				@include displayFlex(column, center, center);
 				width: 100%;
 
-				div {
+				div[options="[object Object]"] {
 					@include displayFlex(null, center, center);
 					width: 100% !important;
 
@@ -164,6 +164,15 @@ main {
 							width: fit-content !important;
 						}
 					}
+				}
+
+				.glnTqc {
+					border-top-left-radius: $sections-border-radius;
+					border-top-right-radius: $sections-border-radius;
+				}
+
+				.eHijxz {
+					padding: 0px 15px;
 				}
 			}
 		}

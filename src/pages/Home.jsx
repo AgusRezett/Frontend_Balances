@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import AreaGraph from "../components/graphs/AreaGraph";
 import PhysicalMoneyContainer from "../components/pages/home/PhysicalMoneyContainer";
 import InvestedMoneyContainer from "../components/pages/home/InvestedMoneyContainer";
+import TableInformation from "../components/pages/home/TableInformation";
 
 // Objects
 const money = {
@@ -161,6 +162,13 @@ export default function Home() {
 								/>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div className="row general-graph-container">
+				<div className="principal-sections-container col-12" style={{ height: "100% " }}>
+					<div className="principal-sections-content section-graph">
+						<TableInformation />
 					</div>
 				</div>
 			</div>

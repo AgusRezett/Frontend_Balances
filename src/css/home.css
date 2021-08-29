@@ -115,19 +115,19 @@ main .general-graph-container .principal-sections-container .section-graph {
   align-items: center;
   width: 100%;
 }
-main .general-graph-container .principal-sections-container .section-graph div {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100% !important;
 }
-main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas svg {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas svg {
   width: 100% !important;
 }
-main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas svg .apexcharts-legend-series {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas svg .apexcharts-legend-series {
   width: fit-content !important;
 }
-main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas svg .apexcharts-title-text {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas svg .apexcharts-title-text {
   fill: #575757;
   font-family: "Poppins", sans-serif !important;
   font-weight: bolder;
@@ -135,22 +135,29 @@ main .general-graph-container .principal-sections-container .section-graph div .
   line-height: 22px;
   margin-left: 10px !important;
 }
-main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-tooltip {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas .apexcharts-tooltip {
   width: 30% !important;
 }
-main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group {
   flex-direction: row;
 }
-main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group .apexcharts-tooltip-marker {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group .apexcharts-tooltip-marker {
   width: 13px !important;
   padding-left: 10px;
   margin: 0;
 }
-main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group .apexcharts-tooltip-text .apexcharts-tooltip-y-group {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group .apexcharts-tooltip-text .apexcharts-tooltip-y-group {
   flex-direction: row;
 }
-main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-xaxistooltip {
+main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas .apexcharts-xaxistooltip {
   width: fit-content !important;
+}
+main .general-graph-container .principal-sections-container .section-graph .glnTqc {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+main .general-graph-container .principal-sections-container .section-graph .eHijxz {
+  padding: 0px 15px;
 }
 
 /*# sourceMappingURL=home.css.map */
