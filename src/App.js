@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Pages routes
@@ -15,6 +15,20 @@ import "./css/home.css";
 import "rsuite/dist/styles/rsuite-default.css";
 
 export default function App() {
+	const [displayWidth, setDisplayWidth] = useState(window.innerWidth);
+
+	const changeDisplay = () => {
+		setDisplayWidth(window.innerWidth);
+	};
+
+	useEffect(() => {
+		window.addEventListener("resize", changeDisplay);
+
+		return () => {
+			window.removeEventListener("resize", changeDisplay);
+		};
+	});
+
 	return (
 		<div className="dashboard-app">
 			<Router basename="/Balances">
@@ -22,7 +36,7 @@ export default function App() {
 				<section>
 					<Topnavbar />
 					<Switch>
-						<Route path="/" exact component={Home} />
+						<Route path="/" exact component={Home}></Route>
 					</Switch>
 				</section>
 				{/* <Footer /> */}

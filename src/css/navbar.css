@@ -60,6 +60,9 @@
   border-radius: 50px;
   margin-left: 20px;
 }
+.topnavbar .crypto-bubble:last-child {
+  margin-right: 20px;
+}
 .topnavbar .crypto-bubble div {
   display: flex;
   flex-direction: row;

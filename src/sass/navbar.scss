@@ -77,6 +77,10 @@
 		border-radius: 50px;
 		margin-left: 20px;
 
+		&:last-child {
+			margin-right: 20px;
+		}
+
 		div {
 			@include displayFlex(row, space-evenly, center);
 			width: 100%;

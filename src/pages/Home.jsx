@@ -69,6 +69,8 @@ export default function Home() {
 	const [usdPrice, setUsdPrice] = useState(0);
 	getUsdPrice(setUsdPrice);
 
+	const [viewWidth, setViewWidth] = useState(0);
+
 	useEffect(() => {
 		//? Get the current ars value and convert it to usd
 		const totalPriceArs = document.getElementById("total-price-ars");
@@ -97,9 +99,22 @@ export default function Home() {
 			setTextTotal(" ! invertido");
 			totalBtn.classList.remove("total-btn-active");
 		}
+
+		//? Set the section view width
+		const pageView = document.getElementById("page-view");
+		const changeDisplay = () => {
+			setViewWidth(pageView.offsetWidth);
+		};
+		changeDisplay();
+		window.addEventListener("resize", changeDisplay);
+
+		return () => {
+			window.removeEventListener("resize", changeDisplay);
+		};
 	}, [usdPrice, investedProfit, totalInvested]);
+
 	return (
-		<main>
+		<main id="page-view">
 			<div className="row general-graph-container">
 				<div className="principal-sections-container col-md-6">
 					<div className="principal-sections-content section-graph">
@@ -131,9 +146,11 @@ export default function Home() {
 													? getTotalPhysical(money) + getTotalInvested(money, usdPrice)
 													: getTotalPhysical(money)}
 											</h3>
-											<div className="icon-container">
-												<img src={ArgentineFlag} alt="" className="icon-flag" />
-											</div>
+											{viewWidth >= 356 ? (
+												<div className="icon-container">
+													<img src={ArgentineFlag} alt="" className="icon-flag" />
+												</div>
+											) : null}
 										</div>
 									</div>
 									<span>
@@ -141,9 +158,11 @@ export default function Home() {
 									</span>
 									<div className="national-currency-container">
 										<div className="total-price-container">
-											<div className="icon-container">
-												<img src={UsaFlag} alt="" className="icon-flag" />
-											</div>
+											{viewWidth >= 356 ? (
+												<div className="icon-container">
+													<img src={UsaFlag} alt="" className="icon-flag" />
+												</div>
+											) : null}
 											<h3 id="total-price-usd">$0</h3>
 										</div>
 									</div>
@@ -173,9 +192,11 @@ export default function Home() {
 													? money.invested.binance + money.profit.binance
 													: money.invested.binance}
 											</h3>
-											<div className="icon-container">
-												<img src={BinanceLogo} alt="" className="icon-flag" />
-											</div>
+											{viewWidth >= 356 ? (
+												<div className="icon-container">
+													<img src={BinanceLogo} alt="" className="icon-flag" />
+												</div>
+											) : null}
 										</div>
 									</div>
 									<div className="national-currency-container">
@@ -186,9 +207,11 @@ export default function Home() {
 													? money.invested.mdex + money.profit.mdex
 													: money.invested.mdex}
 											</h3>
-											<div className="icon-container">
-												<img src={MdexLogo} alt="" className="icon-flag" />
-											</div>
+											{viewWidth >= 356 ? (
+												<div className="icon-container">
+													<img src={MdexLogo} alt="" className="icon-flag" />
+												</div>
+											) : null}
 										</div>
 									</div>
 								</div>
