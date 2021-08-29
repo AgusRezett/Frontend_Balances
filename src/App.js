@@ -15,6 +15,7 @@ import "./css/home.css";
 import "rsuite/dist/styles/rsuite-default.css";
 
 export default function App() {
+	// eslint-disable-next-line no-unused-vars
 	const [displayWidth, setDisplayWidth] = useState(window.innerWidth);
 
 	const changeDisplay = () => {

@@ -119,12 +119,16 @@ main {
 				width: 100%;
 
 				div {
-					@include displayFlex(column, center, center);
+					@include displayFlex(null, center, center);
 					width: 100% !important;
 
 					.apexcharts-canvas {
 						svg {
 							width: 100% !important;
+
+							.apexcharts-legend-series {
+								width: fit-content !important;
+							}
 
 							.apexcharts-title-text {
 								fill: $text-color;

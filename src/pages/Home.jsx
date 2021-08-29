@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Icon } from "rsuite";
 
 // Components
-import BarGraph from "../components/graphs/BarGraph";
+import AreaGraph from "../components/graphs/AreaGraph";
 
 // Images
 import ArgentineFlag from "../assets/flags/argentine.png";
@@ -118,7 +118,7 @@ export default function Home() {
 			<div className="row general-graph-container">
 				<div className="principal-sections-container col-md-6">
 					<div className="principal-sections-content section-graph">
-						<BarGraph />
+						<AreaGraph />
 					</div>
 				</div>
 				<div className="principal-sections-container col-sm-12 col-md-6 ">

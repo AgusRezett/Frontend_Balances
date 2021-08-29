@@ -117,13 +117,15 @@ main .general-graph-container .principal-sections-container .section-graph {
 }
 main .general-graph-container .principal-sections-container .section-graph div {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100% !important;
 }
 main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas svg {
   width: 100% !important;
+}
+main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas svg .apexcharts-legend-series {
+  width: fit-content !important;
 }
 main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas svg .apexcharts-title-text {
   fill: #575757;
