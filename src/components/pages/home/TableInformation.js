@@ -1,9 +1,10 @@
 import React, { useCallback, useMemo, useState } from "react";
-/* import differenceBy from "lodash/differenceBy";
-import Button from "../shared/Button"; */
+import differenceBy from "lodash/differenceBy";
+// eslint-disable-next-line no-unused-vars
+import { Button, Modal, ModalBody, ModalHeader, Input } from "reactstrap";
 import DataTable from "react-data-table-component";
 
-/* const actions = <Button key="add">Add</Button>; */
+const actions = <Button key="add">Add</Button>;
 const columns = [
 	{
 		name: "Fecha",
@@ -59,32 +60,34 @@ export default function RowToggle() {
 		setSelectedRows(state.selectedRows);
 	}, []);
 
-	/* const contextActions = useMemo(() => {
+	const contextActions = useMemo(() => {
 		const handleDelete = () => {
-			if (window.confirm(`Are you sure you want to delete:\r ${selectedRows.map((r) => r.name)}?`)) {
+			if (window.confirm(`Are you sure you want to delete: ${selectedRows.map((r) => r.date)}?`)) {
 				setToggleCleared(!toggleCleared);
-				setData(differenceBy(data, selectedRows, "name"));
+				setData(differenceBy(data, selectedRows, "date"));
 			}
 		};
 
-		return {
+		return (
 			<Button key="delete" onClick={handleDelete} style={{ backgroundColor: "red" }} icon>
 				Delete
 			</Button>
-		};
-	}, [selectedRows, toggleCleared]); */
+		);
+	}, [data, selectedRows, toggleCleared]);
 
 	return (
-		<DataTable
-			title="Balances"
-			columns={columns}
-			data={data}
-			selectableRows
-			/* actions={actions} */
-			/* contextActions={contextActions} */
-			onSelectedRowsChange={handleRowSelected}
-			clearSelectedRows={toggleCleared}
-			pagination
-		/>
+		<div className="table-responsive">
+			<DataTable
+				title="Balances💰"
+				columns={columns}
+				data={data}
+				selectableRows
+				actions={actions}
+				contextActions={contextActions}
+				onSelectedRowsChange={handleRowSelected}
+				clearSelectedRows={toggleCleared}
+				pagination
+			/>
+		</div>
 	);
 }

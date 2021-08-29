@@ -45,6 +45,7 @@ main {
 
 						h6 {
 							text-align: left;
+							font-weight: 500;
 
 							.profit-btn,
 							.total-btn {
@@ -88,6 +89,10 @@ main {
 									@include displayFlex(row-reverse, space-evenly, center);
 									width: 100% !important;
 									height: 100%;
+
+									h3 {
+										font-weight: 500;
+									}
 
 									.icon-container {
 										@include displayFlex(row, center, center);
@@ -133,7 +138,7 @@ main {
 							.apexcharts-title-text {
 								fill: $text-color;
 								font-family: "Poppins", sans-serif !important;
-								font-weight: bolder;
+								font-weight: 500;
 								font-size: 16px;
 								line-height: 22px;
 								margin-left: 10px !important;
@@ -174,6 +179,12 @@ main {
 				.eHijxz {
 					padding: 0px 15px;
 				}
+			}
+		}
+
+		div {
+			.table-responsive {
+				width: 100%;
 			}
 		}
 	}
