@@ -122,16 +122,33 @@ main .general-graph-container .principal-sections-container .section-graph div {
   align-items: center;
   width: 100% !important;
 }
-main .general-graph-container .principal-sections-container .section-graph div svg {
+main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas svg {
   width: 100% !important;
 }
-main .general-graph-container .principal-sections-container .section-graph div svg .apexcharts-title-text {
+main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas svg .apexcharts-title-text {
   fill: #575757;
   font-family: "Poppins", sans-serif !important;
   font-weight: bolder;
   font-size: 16px;
   line-height: 22px;
   margin-left: 10px !important;
+}
+main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-tooltip {
+  width: 30% !important;
+}
+main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group {
+  flex-direction: row;
+}
+main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group .apexcharts-tooltip-marker {
+  width: 13px !important;
+  padding-left: 10px;
+  margin: 0;
+}
+main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-series-group .apexcharts-tooltip-text .apexcharts-tooltip-y-group {
+  flex-direction: row;
+}
+main .general-graph-container .principal-sections-container .section-graph div .apexcharts-canvas .apexcharts-xaxistooltip {
+  width: fit-content !important;
 }
 
 /*# sourceMappingURL=home.css.map */
