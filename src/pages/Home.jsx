@@ -1,15 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
-import { Icon } from "rsuite";
 
 // Components
 import AreaGraph from "../components/graphs/AreaGraph";
-
-// Images
-import ArgentineFlag from "../assets/flags/argentine.png";
-import UsaFlag from "../assets/flags/usa.png";
-import BinanceLogo from "../assets/tokens/bnb.png";
-import MdexLogo from "../assets/tokens/mdx.png";
+import PhysicalMoneyContainer from "../components/pages/home/PhysicalMoneyContainer";
+import InvestedMoneyContainer from "../components/pages/home/InvestedMoneyContainer";
 
 // Objects
 const money = {
@@ -137,36 +132,12 @@ export default function Home() {
 										{textTotal}
 									</span>
 								</h6>
-								<div className="money-container">
-									<div className="national-currency-container">
-										<div className="total-price-container">
-											<h3 id="total-price-ars">
-												$
-												{totalInvested
-													? getTotalPhysical(money) + getTotalInvested(money, usdPrice)
-													: getTotalPhysical(money)}
-											</h3>
-											{viewWidth >= 356 ? (
-												<div className="icon-container">
-													<img src={ArgentineFlag} alt="" className="icon-flag" />
-												</div>
-											) : null}
-										</div>
-									</div>
-									<span>
-										<Icon icon="exchange" />
-									</span>
-									<div className="national-currency-container">
-										<div className="total-price-container">
-											{viewWidth >= 356 ? (
-												<div className="icon-container">
-													<img src={UsaFlag} alt="" className="icon-flag" />
-												</div>
-											) : null}
-											<h3 id="total-price-usd">$0</h3>
-										</div>
-									</div>
-								</div>
+								<PhysicalMoneyContainer
+									totalInvested={totalInvested}
+									getTotalPhysical={getTotalPhysical(money)}
+									getTotalInvested={getTotalInvested(money, usdPrice)}
+									viewWidth={viewWidth}
+								/>
 							</div>
 						</div>
 						<div className="secondary-sections-container col-sm-12">
@@ -183,38 +154,11 @@ export default function Home() {
 										{textInvested}
 									</span>
 								</h6>
-								<div className="money-container">
-									<div className="national-currency-container">
-										<div className="total-price-container">
-											<h3>
-												$
-												{investedProfit
-													? money.invested.binance + money.profit.binance
-													: money.invested.binance}
-											</h3>
-											{viewWidth >= 356 ? (
-												<div className="icon-container">
-													<img src={BinanceLogo} alt="" className="icon-flag" />
-												</div>
-											) : null}
-										</div>
-									</div>
-									<div className="national-currency-container">
-										<div className="total-price-container">
-											<h3>
-												$
-												{investedProfit
-													? money.invested.mdex + money.profit.mdex
-													: money.invested.mdex}
-											</h3>
-											{viewWidth >= 356 ? (
-												<div className="icon-container">
-													<img src={MdexLogo} alt="" className="icon-flag" />
-												</div>
-											) : null}
-										</div>
-									</div>
-								</div>
+								<InvestedMoneyContainer
+									investedProfit={investedProfit}
+									money={money}
+									viewWidth={viewWidth}
+								/>
 							</div>
 						</div>
 					</div>
