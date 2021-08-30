@@ -22,22 +22,44 @@ export default function App() {
 		setDisplayWidth(window.innerWidth);
 	};
 
+	const [usdValues, setUsdValues] = useState(false);
+	const [usdPrice, setUsdPrice] = useState(0);
+	const getUsdPrice = (setUsdPrice) => {
+		fetch(`https://www.dolarsi.com/api/api.php?type=valoresprincipales`)
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				data.forEach((item) => {
+					if (item.casa.nombre === "Dolar Blue") {
+						setUsdPrice(parseInt(item.casa.venta));
+					}
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	useEffect(() => {
+		getUsdPrice(setUsdPrice);
 		window.addEventListener("resize", changeDisplay);
 
 		return () => {
 			window.removeEventListener("resize", changeDisplay);
 		};
-	});
+	}, []);
 
 	return (
 		<div className="dashboard-app">
 			<Router basename="/Balances">
 				<Sidenavbar />
 				<section>
-					<Topnavbar />
+					<Topnavbar setUsdValues={setUsdValues} usdValues={usdValues} usdPrice={usdPrice} />
 					<Switch>
-						<Route path="/" exact component={Home}></Route>
+						<Route path="/" exact>
+							<Home usdValues={usdValues} usdPrice={usdPrice} />
+						</Route>
 					</Switch>
 				</section>
 				{/* <Footer /> */}

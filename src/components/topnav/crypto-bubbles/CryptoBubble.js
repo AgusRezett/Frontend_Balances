@@ -1,30 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 // Components
-import Btc from "../../assets/tokens/btc.png";
-import Eth from "../../assets/tokens/eth.png";
-import Mdx from "../../assets/tokens/mdx.png";
+import Btc from "../../../assets/tokens/btc.png";
+import Eth from "../../../assets/tokens/eth.png";
+import Mdx from "../../../assets/tokens/mdx.png";
 
 // Styles
 
 const getTokenPrice = (setTokenPrice, token) => {
-	let alt;
-	if (token !== "MDX") {
-		alt = true;
-	} else {
-		alt = false;
-	}
-
 	fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${token}USDT`)
 		.then((res) => {
 			return res.json();
 		})
 		.then((data) => {
-			if (alt) {
-				setTokenPrice(Math.round(data.price));
-			} else {
-				setTokenPrice(data.price);
-			}
+			setTokenPrice(parseFloat(data.price).toFixed(2));
 		})
 		.catch((err) => {
 			console.log(err);

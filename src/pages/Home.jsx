@@ -8,19 +8,19 @@ import InvestedMoneyContainer from "../components/pages/home/InvestedMoneyContai
 import TableInformation from "../components/pages/home/TableInformation";
 
 // Objects
-const money = {
+const moneyArs = {
 	physical: {
 		underC: 150,
 		overC: 1600,
 		uala: 346,
 	},
 	invested: {
-		binance: 31.15,
-		mdex: 33,
+		binance: 5638,
+		mdex: 5973,
 	},
 	profit: {
 		binance: 0,
-		mdex: -2.41,
+		mdex: -436.21,
 	},
 };
 
@@ -38,43 +38,51 @@ const getTotalInvested = (money, usdPrice) => {
 	return total;
 };
 
-const getUsdPrice = (setUsdPrice) => {
-	fetch(`https://www.dolarsi.com/api/api.php?type=valoresprincipales`)
-		.then((res) => {
-			return res.json();
-		})
-		.then((data) => {
-			data.forEach((item) => {
-				if (item.casa.nombre === "Dolar Blue") {
-					setUsdPrice(parseInt(item.casa.venta));
-				}
-			});
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+const getInvestedAvailable = (money, usdPrice) => {
+	let total;
+	if (usdPrice !== 0) {
+		total = Math.round((money.invested.binance + money.profit.binance) * usdPrice);
+	} else {
+		total = money.invested.binance + money.profit.binance;
+	}
+	return total;
 };
 
-export default function Home() {
+export default function Home({ usdValues, usdPrice }) {
 	const [totalInvested, setTotalInvested] = useState(false);
 	const [textTotal, setTextTotal] = useState(" ! invertido");
 
 	const [investedProfit, setInvestedProfit] = useState(false);
 	const [textInvested, setTextInvested] = useState(" ! ganancias");
 
-	const [usdPrice, setUsdPrice] = useState(0);
-	getUsdPrice(setUsdPrice);
-
 	const [viewWidth, setViewWidth] = useState(0);
 
-	useEffect(() => {
-		//? Get the current ars value and convert it to usd
-		const totalPriceArs = document.getElementById("total-price-ars");
-		const totalPriceUsd = document.getElementById("total-price-usd");
+	const [money, setMoney] = useState(moneyArs);
 
-		const cleanArs = parseInt(totalPriceArs.textContent.replace("$", "").replace(".", ""));
-		const formatedUsd = new Intl.NumberFormat("de-DE").format(Math.round(cleanArs / usdPrice));
-		totalPriceUsd.innerHTML = `$${formatedUsd}`;
+	useEffect(() => {
+		const roundUsdValue = (value) => {
+			return (value / usdPrice).toFixed(2);
+		};
+		if (usdValues) {
+			let moneyUsd = {
+				physical: {
+					underC: roundUsdValue(moneyArs.physical.underC),
+					overC: roundUsdValue(moneyArs.physical.overC),
+					uala: roundUsdValue(moneyArs.physical.uala),
+				},
+				invested: {
+					binance: roundUsdValue(moneyArs.invested.binance),
+					mdex: roundUsdValue(moneyArs.invested.mdex),
+				},
+				profit: {
+					binance: roundUsdValue(moneyArs.profit.binance),
+					mdex: roundUsdValue(moneyArs.profit.mdex),
+				},
+			};
+			setMoney(moneyUsd);
+		} else {
+			setMoney(moneyArs);
+		}
 
 		//? Toggle profit value for showing or not
 		const profitBtn = document.getElementById("profit-btn");
@@ -107,7 +115,7 @@ export default function Home() {
 		return () => {
 			window.removeEventListener("resize", changeDisplay);
 		};
-	}, [usdPrice, investedProfit, totalInvested]);
+	}, [investedProfit, totalInvested, usdPrice, usdValues]);
 
 	return (
 		<main id="page-view">
@@ -135,8 +143,10 @@ export default function Home() {
 								</h6>
 								<PhysicalMoneyContainer
 									totalInvested={totalInvested}
-									getTotalPhysical={getTotalPhysical(money)}
-									getTotalInvested={getTotalInvested(money, usdPrice)}
+									getTotalPhysical={getTotalPhysical(moneyArs)}
+									getTotalInvested={getTotalInvested(moneyArs, usdPrice)}
+									getInvestedAvailable={getInvestedAvailable(moneyArs, 0)}
+									usdPrice={usdPrice}
 									viewWidth={viewWidth}
 								/>
 							</div>
@@ -159,6 +169,7 @@ export default function Home() {
 									investedProfit={investedProfit}
 									money={money}
 									viewWidth={viewWidth}
+									usdValues={usdValues}
 								/>
 							</div>
 						</div>
@@ -168,7 +179,7 @@ export default function Home() {
 			<div className="row general-graph-container">
 				<div className="principal-sections-container col-12" style={{ height: "100% " }}>
 					<div className="principal-sections-content section-graph">
-						<TableInformation />
+						<TableInformation usdValues={usdValues} usdPrice={usdPrice} />
 					</div>
 				</div>
 			</div>

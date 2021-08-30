@@ -6,7 +6,7 @@ $sections-border-radius: 10px;
 $sections-box-shadow: 0px 3px 20px 0px rgb(92 97 97 / 10%);
 
 main {
-	padding: 15px;
+	padding: 5px;
 	overflow: auto;
 	overflow-x: hidden;
 	z-index: 10;
@@ -171,13 +171,17 @@ main {
 					}
 				}
 
-				.glnTqc {
-					border-top-left-radius: $sections-border-radius;
-					border-top-right-radius: $sections-border-radius;
-				}
+				.table-responsive {
+					.rdt_TableHeader,
+					.bAanr {
+						border-radius: $sections-border-radius;
+					}
 
-				.eHijxz {
-					padding: 0px 15px;
+					.rdt_Pagination,
+					.hQWUgd {
+						border-bottom-left-radius: $sections-border-radius;
+						border-bottom-right-radius: $sections-border-radius;
+					}
 				}
 			}
 		}

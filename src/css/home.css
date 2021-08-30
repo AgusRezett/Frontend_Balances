@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 main {
-  padding: 15px;
+  padding: 5px;
   overflow: auto;
   overflow-x: hidden;
   z-index: 10;
@@ -156,12 +156,14 @@ main .general-graph-container .principal-sections-container .section-graph div[o
 main .general-graph-container .principal-sections-container .section-graph div[options="[object Object]"] .apexcharts-canvas .apexcharts-xaxistooltip {
   width: fit-content !important;
 }
-main .general-graph-container .principal-sections-container .section-graph .glnTqc {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+main .general-graph-container .principal-sections-container .section-graph .table-responsive .rdt_TableHeader,
+main .general-graph-container .principal-sections-container .section-graph .table-responsive .bAanr {
+  border-radius: 10px;
 }
-main .general-graph-container .principal-sections-container .section-graph .eHijxz {
-  padding: 0px 15px;
+main .general-graph-container .principal-sections-container .section-graph .table-responsive .rdt_Pagination,
+main .general-graph-container .principal-sections-container .section-graph .table-responsive .hQWUgd {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 main .general-graph-container div .table-responsive {
   width: 100%;

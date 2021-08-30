@@ -42,7 +42,7 @@
 .topnavbar {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 60px;
@@ -53,17 +53,23 @@
   transition: all 100ms ease-in-out;
   overflow: auto;
 }
-.topnavbar .crypto-bubble {
+.topnavbar .currencies-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.topnavbar .currencies-container .crypto-bubble {
   width: fit-content;
-  height: 70%;
+  height: 34px;
   background-color: #1d212b;
   border-radius: 50px;
   margin-left: 20px;
 }
-.topnavbar .crypto-bubble:last-child {
+.topnavbar .currencies-container .crypto-bubble:last-child {
   margin-right: 20px;
 }
-.topnavbar .crypto-bubble div {
+.topnavbar .currencies-container .crypto-bubble div {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -71,11 +77,62 @@
   width: 100%;
   height: 100%;
   color: #fff;
-  padding: 0px 10px;
+  padding: 0px 10px 0px 7.5px;
 }
-.topnavbar .crypto-bubble div img {
+.topnavbar .currencies-container .crypto-bubble div img {
   height: 70%;
   padding-right: 7px;
+}
+.topnavbar .toggle-currency-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+}
+.topnavbar .toggle-currency-container .switch-currency {
+  position: relative;
+  display: flex;
+  width: 60px;
+  height: 34px;
+}
+.topnavbar .toggle-currency-container .switch-currency input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  /* &:checked + .slider {
+  	background: $badge-color--usd;
+  } */
+}
+.topnavbar .toggle-currency-container .switch-currency input:checked + .slider::before {
+  transform: translateX(26px);
+  background-image: url(../assets/tokens/usd.png);
+  background-position: center center;
+  background-size: cover;
+}
+.topnavbar .toggle-currency-container .switch-currency .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  background: #1d212b;
+  transition: all 100ms ease-in-out;
+}
+.topnavbar .toggle-currency-container .switch-currency .slider::before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-image: url(../assets/flags/argentine.png);
+  background-position: center center;
+  background-size: cover;
+  border-radius: 50px;
+  transition: all 200ms ease-in-out;
 }
 
 /*# sourceMappingURL=navbar.css.map */
