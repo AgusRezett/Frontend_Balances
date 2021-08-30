@@ -122,7 +122,7 @@ export default function Home({ usdValues, usdPrice }) {
 			<div className="row general-graph-container">
 				<div className="principal-sections-container col-md-6">
 					<div className="principal-sections-content section-graph">
-						<AreaGraph />
+						<AreaGraph usdValues={usdValues} usdPrice={usdPrice} />
 					</div>
 				</div>
 				<div className="principal-sections-container col-sm-12 col-md-6 ">

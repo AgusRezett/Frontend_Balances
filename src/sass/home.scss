@@ -177,6 +177,10 @@ main {
 						border-radius: $sections-border-radius;
 					}
 
+					.rdt_TableBody {
+						overflow-x: hidden;
+					}
+
 					.rdt_Pagination,
 					.hQWUgd {
 						border-bottom-left-radius: $sections-border-radius;

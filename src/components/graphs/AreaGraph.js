@@ -47,42 +47,37 @@ export default function AreaGraph({ usdValues, usdPrice }) {
 		},
 	]);
 
-	useEffect(
-		(usdPrice) => {
-			const seriesArs = [
+	useEffect(() => {
+		const seriesArs = [
+			{
+				name: "Físico",
+				data: [10500, 4650, 3460, 3680, 3550, 4800, 2096],
+			},
+			{
+				name: "Invertido",
+				data: [0, 3500, 5200, 4467, 3070, 3278, 11520],
+			},
+		];
+		const roundUsdValue = (value) => {
+			return (value / usdPrice).toFixed(2);
+		};
+
+		if (usdValues) {
+			const seriesUsd = [
 				{
 					name: "Físico",
-					data: [10500, 4650, 3460, 3680, 3550, 4800, 2096],
+					data: seriesArs[0].data.map((value) => roundUsdValue(value)),
 				},
 				{
 					name: "Invertido",
-					data: [0, 3500, 5200, 4467, 3070, 3278, 11520],
+					data: seriesArs[1].data.map((value) => roundUsdValue(value)),
 				},
 			];
-			const roundUsdValue = (value) => {
-				//! It doesnt receive the usdPrice
-				return (value / usdPrice).toFixed(2);
-			};
-
-			if (usdValues) {
-				//setSeries(seriesUsd);
-			} else {
-				const seriesUsd = [
-					{
-						name: "Físico",
-						data: seriesArs[0].data.map((value) => roundUsdValue(value)),
-					},
-					{
-						name: "Invertido",
-						data: seriesArs[1].data.map((value) => roundUsdValue(value)),
-					},
-				];
-				console.log(seriesUsd);
-				setSeries(seriesArs);
-			}
-		},
-		[usdValues, usdPrice]
-	);
+			setSeries(seriesUsd);
+		} else {
+			setSeries(seriesArs);
+		}
+	}, [usdValues, usdPrice]);
 
 	return <ReactApexChart options={options} series={series} type="area" height={290} />;
 }

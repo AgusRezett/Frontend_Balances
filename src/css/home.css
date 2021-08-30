@@ -160,6 +160,9 @@ main .general-graph-container .principal-sections-container .section-graph .tabl
 main .general-graph-container .principal-sections-container .section-graph .table-responsive .bAanr {
   border-radius: 10px;
 }
+main .general-graph-container .principal-sections-container .section-graph .table-responsive .rdt_TableBody {
+  overflow-x: hidden;
+}
 main .general-graph-container .principal-sections-container .section-graph .table-responsive .rdt_Pagination,
 main .general-graph-container .principal-sections-container .section-graph .table-responsive .hQWUgd {
   border-bottom-left-radius: 10px;
