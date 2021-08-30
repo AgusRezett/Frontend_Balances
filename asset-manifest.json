@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Balances/static/css/main.58726d51.chunk.css",
+    "main.css": "/Balances/static/css/main.9c27a700.chunk.css",
     "main.js": "/Balances/static/js/main.cbd629a4.chunk.js",
     "main.js.map": "/Balances/static/js/main.cbd629a4.chunk.js.map",
     "runtime-main.js": "/Balances/static/js/runtime-main.646df4b4.js",
@@ -10,7 +10,7 @@
     "static/js/2.1927e789.chunk.js.map": "/Balances/static/js/2.1927e789.chunk.js.map",
     "index.html": "/Balances/index.html",
     "static/css/2.7785af68.chunk.css.map": "/Balances/static/css/2.7785af68.chunk.css.map",
-    "static/css/main.58726d51.chunk.css.map": "/Balances/static/css/main.58726d51.chunk.css.map",
+    "static/css/main.9c27a700.chunk.css.map": "/Balances/static/css/main.9c27a700.chunk.css.map",
     "static/js/2.1927e789.chunk.js.LICENSE.txt": "/Balances/static/js/2.1927e789.chunk.js.LICENSE.txt",
     "static/media/navbar.css": "/Balances/static/media/usd.5506ca16.png",
     "static/media/bnb.77899e05.png": "/Balances/static/media/bnb.77899e05.png",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.646df4b4.js",
     "static/css/2.7785af68.chunk.css",
     "static/js/2.1927e789.chunk.js",
-    "static/css/main.58726d51.chunk.css",
+    "static/css/main.9c27a700.chunk.css",
     "static/js/main.cbd629a4.chunk.js"
   ]
 }
