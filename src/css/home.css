@@ -104,6 +104,9 @@ main .general-graph-container .principal-sections-container .principal-sections-
 main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content .money-container .national-currency-container .total-price-container .icon-container .icon-flag {
   height: 100%;
 }
+main .general-graph-container .principal-sections-container .principal-sections-content .secondary-sections-container .secondary-sections-content .money-container .national-currency-container span {
+  color: #575757;
+}
 main .general-graph-container .principal-sections-container .principal-sections-column {
   display: flex;
   flex-direction: column;

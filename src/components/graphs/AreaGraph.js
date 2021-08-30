@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
+// Data
+import totalMoneyGraph from "../../data/totalMoneyGraph.json";
+
 export default function AreaGraph({ usdValues, usdPrice }) {
 	const options = {
 		chart: {
@@ -19,15 +22,7 @@ export default function AreaGraph({ usdValues, usdPrice }) {
 		},
 		xaxis: {
 			type: "date",
-			categories: [
-				"2021-08-26",
-				"2021-07-27",
-				"2021-07-06",
-				"2021-05-27",
-				"2021-04-27",
-				"2021-03-27",
-				"2021-02-26",
-			],
+			categories: totalMoneyGraph.categories,
 		},
 		tooltip: {
 			x: {
@@ -36,48 +31,34 @@ export default function AreaGraph({ usdValues, usdPrice }) {
 		},
 	};
 
-	const [series, setSeries] = useState([
-		{
-			name: "Físico",
-			data: [10500, 4650, 3460, 3680, 3550, 4800, 2096],
-		},
-		{
-			name: "Invertido",
-			data: [0, 3500, 5200, 4467, 3070, 3278, 11520],
-		},
-	]);
+	const [series, setSeries] = useState(totalMoneyGraph.series);
+	const [executed, setExecuted] = useState(false);
 
 	useEffect(() => {
-		const seriesArs = [
-			{
-				name: "Físico",
-				data: [10500, 4650, 3460, 3680, 3550, 4800, 2096],
-			},
-			{
-				name: "Invertido",
-				data: [0, 3500, 5200, 4467, 3070, 3278, 11520],
-			},
-		];
 		const roundUsdValue = (value) => {
 			return (value / usdPrice).toFixed(2);
 		};
 
 		if (usdValues) {
-			const seriesUsd = [
-				{
-					name: "Físico",
-					data: seriesArs[0].data.map((value) => roundUsdValue(value)),
-				},
-				{
-					name: "Invertido",
-					data: seriesArs[1].data.map((value) => roundUsdValue(value)),
-				},
-			];
-			setSeries(seriesUsd);
+			if (!executed) {
+				const seriesUsd = [
+					{
+						name: "Físico",
+						data: series[0].data.map((value) => roundUsdValue(value)),
+					},
+					{
+						name: "Invertido",
+						data: series[1].data.map((value) => roundUsdValue(value)),
+					},
+				];
+				setSeries(seriesUsd);
+				setExecuted(true);
+			}
 		} else {
-			setSeries(seriesArs);
+			setSeries(totalMoneyGraph.series);
+			setExecuted(false);
 		}
-	}, [usdValues, usdPrice]);
+	}, [usdValues, usdPrice, series, executed]);
 
 	return <ReactApexChart options={options} series={series} type="area" height={290} />;
 }

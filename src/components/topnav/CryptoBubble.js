@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from "react";
 
 // Components
-import Btc from "../../../assets/tokens/btc.png";
-import Eth from "../../../assets/tokens/eth.png";
-import Mdx from "../../../assets/tokens/mdx.png";
+import Btc from "../../assets/tokens/btc.png";
+import Eth from "../../assets/tokens/eth.png";
+import Mdx from "../../assets/tokens/mdx.png";
 
 // Styles
 
 const getTokenPrice = (setTokenPrice, token) => {
-	fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${token}USDT`)
+	let api;
+	if (token !== "MDX") {
+		api = `https://api.binance.com/api/v3/ticker/price?symbol=${token}USDT`;
+	} else {
+		api = `https://api.huobi.pro/market/trade?symbol=mdxusdt`;
+	}
+	fetch(api)
 		.then((res) => {
 			return res.json();
 		})
 		.then((data) => {
-			setTokenPrice(parseFloat(data.price).toFixed(2));
+			if (api.includes("binance")) {
+				setTokenPrice(parseFloat(data.price).toFixed(2));
+			} else {
+				setTokenPrice(parseFloat(data.tick.data[0].price).toFixed(2));
+			}
 		})
 		.catch((err) => {
 			console.log(err);

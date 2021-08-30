@@ -1,0 +1,15 @@
+{
+	"physical": {
+		"underC": 150,
+		"overC": 1600,
+		"uala": 346
+	},
+	"invested": {
+		"binance": 5638,
+		"mdex": 5973
+	},
+	"profit": {
+		"binance": 0,
+		"mdex": -436.21
+	}
+}

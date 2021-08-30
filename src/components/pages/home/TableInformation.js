@@ -4,62 +4,18 @@ import differenceBy from "lodash/differenceBy";
 import { Button, Modal, ModalBody, ModalHeader, Input } from "reactstrap";
 import DataTable from "react-data-table-component";
 
-// Objects
+// Data
+import MonthlyMoney from "../../../data/monthlyMoney.json";
 
 const actions = <Button key="add">Añadir</Button>;
-const columns = [
-	{
-		name: "Fecha",
-		selector: "date",
-		sortable: true,
-		left: true,
-	},
-	{
-		name: "Vuelto",
-		selector: "underC",
-		sortable: true,
-		center: true,
-	},
-	{
-		name: "Grandes",
-		selector: "overC",
-		sortable: true,
-		center: true,
-	},
-	{
-		name: "Ualá",
-		selector: "uala",
-		sortable: true,
-		center: true,
-	},
-	{
-		name: "Binance",
-		selector: "binance",
-		sortable: true,
-		center: true,
-	},
-	{
-		name: "Mdex",
-		selector: "mdex",
-		sortable: true,
-		center: true,
-	},
-];
 
-const tableDataItems = [
-	{ id: 1, date: "2021-02-26", underC: 0, overC: 10500, uala: 0, binance: 0, mdex: 0 },
-	{ id: 2, date: "2021-03-27", underC: 450, overC: 4200, uala: 0, binance: 3500, mdex: 0 },
-	{ id: 3, date: "2021-04-27", underC: 270, overC: 2500, uala: 690, binance: 5200, mdex: 0 },
-	{ id: 4, date: "2021-05-27", underC: 180, overC: 3500, uala: 0, binance: 4467, mdex: 0 },
-	{ id: 5, date: "2021-07-06", underC: 50, overC: 3500, uala: 0, binance: 3070, mdex: 0 },
-	{ id: 6, date: "2021-07-27", underC: 50, overC: 4500, uala: 250, binance: 3276, mdex: 0 },
-	{ id: 7, date: "2021-08-26", underC: 150, overC: 1600, uala: 346, binance: 5638, mdex: 5973 },
-];
+const tableDataItems = MonthlyMoney;
 
 export default function RowToggle({ usdValues, usdPrice }) {
 	const [selectedRows, setSelectedRows] = useState([]);
 	const [toggleCleared, setToggleCleared] = useState(false);
 	const [data, setData] = useState(tableDataItems);
+	const [columns, setColumns] = useState([]);
 
 	const handleRowSelected = useCallback((state) => {
 		setSelectedRows(state.selectedRows);
@@ -81,22 +37,49 @@ export default function RowToggle({ usdValues, usdPrice }) {
 	}, [data, selectedRows, toggleCleared]);
 
 	useEffect(() => {
+		//? Get an array of all the json whitespace names
+		const jsonNames = ["fecha"].concat(
+			Object.keys(tableDataItems[0].physical).concat(Object.keys(tableDataItems[0].invested))
+		);
+
+		//? Capitalize the first letter of each jsonNames item
+		const jsonNamesCapitalized = jsonNames.map((name) => name.charAt(0).toUpperCase() + name.slice(1));
+
+		//? Create an array of objects with the jsonNames and the jsonNamesCapitalized
+		const physicalNames = Object.keys(tableDataItems[0].physical);
+		const columns = jsonNames.map((name, index) => ({
+			name: jsonNamesCapitalized[index],
+			selector: name === "fecha" ? name : physicalNames.includes(name) ? `physical.${name}` : `invested.${name}`,
+			sortable: true,
+			center: true,
+		}));
+		setColumns(columns);
+
 		const roundUsdValue = (value) => {
 			return (value / usdPrice).toFixed(2);
 		};
 		if (usdValues) {
 			const tableDataItemsUsd = tableDataItems.map((item) => {
 				const newItem = { ...item };
-				newItem.underC = roundUsdValue(item.underC);
-				newItem.overC = roundUsdValue(item.overC);
-				newItem.uala = roundUsdValue(item.uala);
-				newItem.binance = roundUsdValue(item.binance);
-				newItem.mdex = roundUsdValue(item.mdex);
+
+				let tempPhysical = newItem.physical;
+				Object.keys(tempPhysical).forEach((key) => {
+					tempPhysical[key] = roundUsdValue(tempPhysical[key]);
+				});
+				let tempInvested = newItem.invested;
+				Object.keys(tempInvested).forEach((key) => {
+					tempInvested[key] = roundUsdValue(tempInvested[key]);
+				});
+
+				newItem.physical = tempPhysical;
+				newItem.invested = tempInvested;
 				return newItem;
 			});
+			console.log(tableDataItemsUsd);
 			setData(tableDataItemsUsd);
 		} else {
-			setData(tableDataItems);
+			console.log(MonthlyMoney);
+			setData(MonthlyMoney);
 		}
 	}, [usdPrice, usdValues]);
 

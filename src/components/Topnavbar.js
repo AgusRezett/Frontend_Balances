@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Components
-import Bubble from "./topnav/crypto-bubbles/CryptoBubble";
+import Bubble from "./topnav/CryptoBubble";
 import SwitchCurrency from "./topnav/SwitchCurrency";
 import Usd from "../assets/tokens/usd.png";
 

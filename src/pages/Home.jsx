@@ -7,22 +7,8 @@ import PhysicalMoneyContainer from "../components/pages/home/PhysicalMoneyContai
 import InvestedMoneyContainer from "../components/pages/home/InvestedMoneyContainer";
 import TableInformation from "../components/pages/home/TableInformation";
 
-// Objects
-const moneyArs = {
-	physical: {
-		underC: 150,
-		overC: 1600,
-		uala: 346,
-	},
-	invested: {
-		binance: 5638,
-		mdex: 5973,
-	},
-	profit: {
-		binance: 0,
-		mdex: -436.21,
-	},
-};
+// Data
+import currentMoney from "../data/currentMoney.json";
 
 const getTotalPhysical = (money) => {
 	return money.physical.underC + money.physical.overC + money.physical.uala;
@@ -57,7 +43,7 @@ export default function Home({ usdValues, usdPrice }) {
 
 	const [viewWidth, setViewWidth] = useState(0);
 
-	const [money, setMoney] = useState(moneyArs);
+	const [money, setMoney] = useState(currentMoney);
 
 	useEffect(() => {
 		const roundUsdValue = (value) => {
@@ -66,22 +52,22 @@ export default function Home({ usdValues, usdPrice }) {
 		if (usdValues) {
 			let moneyUsd = {
 				physical: {
-					underC: roundUsdValue(moneyArs.physical.underC),
-					overC: roundUsdValue(moneyArs.physical.overC),
-					uala: roundUsdValue(moneyArs.physical.uala),
+					underC: roundUsdValue(currentMoney.physical.underC),
+					overC: roundUsdValue(currentMoney.physical.overC),
+					uala: roundUsdValue(currentMoney.physical.uala),
 				},
 				invested: {
-					binance: roundUsdValue(moneyArs.invested.binance),
-					mdex: roundUsdValue(moneyArs.invested.mdex),
+					binance: roundUsdValue(currentMoney.invested.binance),
+					mdex: roundUsdValue(currentMoney.invested.mdex),
 				},
 				profit: {
-					binance: roundUsdValue(moneyArs.profit.binance),
-					mdex: roundUsdValue(moneyArs.profit.mdex),
+					binance: roundUsdValue(currentMoney.profit.binance),
+					mdex: roundUsdValue(currentMoney.profit.mdex),
 				},
 			};
 			setMoney(moneyUsd);
 		} else {
-			setMoney(moneyArs);
+			setMoney(currentMoney);
 		}
 
 		//? Toggle profit value for showing or not
@@ -143,9 +129,9 @@ export default function Home({ usdValues, usdPrice }) {
 								</h6>
 								<PhysicalMoneyContainer
 									totalInvested={totalInvested}
-									getTotalPhysical={getTotalPhysical(moneyArs)}
-									getTotalInvested={getTotalInvested(moneyArs, usdPrice)}
-									getInvestedAvailable={getInvestedAvailable(moneyArs, 0)}
+									getTotalPhysical={getTotalPhysical(currentMoney)}
+									getTotalInvested={getTotalInvested(currentMoney, usdPrice)}
+									getInvestedAvailable={getInvestedAvailable(currentMoney, 0)}
 									usdPrice={usdPrice}
 									viewWidth={viewWidth}
 								/>

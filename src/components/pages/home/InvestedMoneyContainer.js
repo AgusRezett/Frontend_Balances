@@ -30,9 +30,14 @@ export default function PhysicalMoneyContainer({ investedProfit, money, viewWidt
 							: money.invested.binance}
 					</h3>
 					{viewWidth >= 356 ? (
-						<div className="icon-container">
+						<a
+							href="https://www.binance.com/es/my/wallet/account/main"
+							target="_blank"
+							rel="noreferrer"
+							className="icon-container"
+						>
 							<img src={BinanceLogo} alt="binance-logo" className="icon-flag" />
-						</div>
+						</a>
 					) : null}
 				</div>
 			</div>
@@ -45,9 +50,14 @@ export default function PhysicalMoneyContainer({ investedProfit, money, viewWidt
 							: money.invested.mdex}
 					</h3>
 					{viewWidth >= 356 ? (
-						<div className="icon-container">
+						<a
+							href="https://mdex.com/#/pool/lockup/mdx"
+							target="_blank"
+							rel="noreferrer"
+							className="icon-container"
+						>
 							<img src={MdexLogo} alt="mdex-logo" className="icon-flag" />
-						</div>
+						</a>
 					) : null}
 				</div>
 			</div>

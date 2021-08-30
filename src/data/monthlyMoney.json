@@ -1,0 +1,44 @@
+[
+	{
+		"id": 1,
+		"fecha": "2021-02-26",
+		"physical": { "vuelto": 0, "grandes": 10500, "uala": 0 },
+		"invested": { "binance": 0, "mdex": 0 }
+	},
+	{
+		"id": 2,
+		"fecha": "2021-03-27",
+		"physical": { "vuelto": 450, "grandes": 4200, "uala": 0 },
+		"invested": { "binance": 3500, "mdex": 0 }
+	},
+	{
+		"id": 3,
+		"fecha": "2021-04-27",
+		"physical": { "vuelto": 270, "grandes": 2500, "uala": 690 },
+		"invested": { "binance": 5200, "mdex": 0 }
+	},
+	{
+		"id": 4,
+		"fecha": "2021-05-27",
+		"physical": { "vuelto": 180, "grandes": 3500, "uala": 0 },
+		"invested": { "binance": 4467, "mdex": 0 }
+	},
+	{
+		"id": 5,
+		"fecha": "2021-07-06",
+		"physical": { "vuelto": 50, "grandes": 3500, "uala": 0 },
+		"invested": { "binance": 3070, "mdex": 0 }
+	},
+	{
+		"id": 6,
+		"fecha": "2021-07-27",
+		"physical": { "vuelto": 50, "grandes": 4500, "uala": 250 },
+		"invested": { "binance": 3276, "mdex": 0 }
+	},
+	{
+		"id": 7,
+		"fecha": "2021-08-26",
+		"physical": { "vuelto": 150, "grandes": 1600, "uala": 346 },
+		"invested": { "binance": 5638, "mdex": 5973 }
+	}
+]
