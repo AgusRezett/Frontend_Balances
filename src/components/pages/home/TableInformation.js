@@ -78,6 +78,7 @@ export default function RowToggle({ usdValues, usdPrice }) {
 			console.log(tableDataItemsUsd);
 			setData(tableDataItemsUsd);
 		} else {
+			//! It doesnt refresh the ARS values
 			console.log(MonthlyMoney);
 			setData(MonthlyMoney);
 		}
