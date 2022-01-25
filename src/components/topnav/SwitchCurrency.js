@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 // Components
 
 // Styles
 
-export default function SwitchCurrency({ setUsdValues }) {
+export default function SwitchCurrency({ setUsdCurrency }) {
 	useEffect(() => {
-		const checkbox = document.getElementById("checkbox-badge");
-		checkbox.addEventListener("change", () => {
+		const checkbox = document.getElementById('checkbox-badge');
+		checkbox.addEventListener('change', () => {
 			if (checkbox.checked) {
-				setUsdValues(true);
+				setUsdCurrency(true);
 			} else {
-				setUsdValues(false);
+				setUsdCurrency(false);
 			}
 		});
 	});

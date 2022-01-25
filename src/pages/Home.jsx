@@ -1,45 +1,29 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react';
+
+// Hooks
+import { GlobalContext } from '../hooks/useContext/Contexts';
+
+// Functions
+import { getTotalPhysical, getTotalInvested, getInvestedAvailable } from '../functions/home/HomeFunctions';
 
 // Components
-import AreaGraph from "../components/graphs/AreaGraph";
-import PhysicalMoneyContainer from "../components/pages/home/PhysicalMoneyContainer";
-import InvestedMoneyContainer from "../components/pages/home/InvestedMoneyContainer";
-import TableInformation from "../components/pages/home/TableInformation";
+import AreaGraph from '../components/graphs/AreaGraph';
+import PhysicalMoneyContainer from '../components/pages/home/PhysicalMoneyContainer';
+import InvestedMoneyContainer from '../components/pages/home/InvestedMoneyContainer';
+import TableInformation from '../components/pages/home/TableInformation';
 
 // Data
-import currentMoney from "../data/currentMoney.json";
+import currentMoney from '../data/currentMoney.json';
 
-const getTotalPhysical = (money) => {
-	return money.physical.underC + money.physical.overC + money.physical.uala;
-};
+export default function Home() {
+	const { usdPrice, usdCurrency, setUsdCurrency } = useContext(GlobalContext);
 
-const getTotalInvested = (money, usdPrice) => {
-	let total;
-	if (usdPrice !== 0) {
-		total = Math.round((money.invested.binance + money.invested.mdex) * usdPrice);
-	} else {
-		total = money.invested.binance + money.invested.mdex;
-	}
-	return total;
-};
-
-const getInvestedAvailable = (money, usdPrice) => {
-	let total;
-	if (usdPrice !== 0) {
-		total = Math.round((money.invested.binance + money.profit.binance) * usdPrice);
-	} else {
-		total = money.invested.binance + money.profit.binance;
-	}
-	return total;
-};
-
-export default function Home({ usdValues, usdPrice }) {
 	const [totalInvested, setTotalInvested] = useState(false);
-	const [textTotal, setTextTotal] = useState(" ! invertido");
+	const [textTotal, setTextTotal] = useState(' ! invertido');
 
 	const [investedProfit, setInvestedProfit] = useState(false);
-	const [textInvested, setTextInvested] = useState(" ! ganancias");
+	const [textInvested, setTextInvested] = useState(' ! ganancias');
 
 	const [viewWidth, setViewWidth] = useState(0);
 
@@ -49,7 +33,7 @@ export default function Home({ usdValues, usdPrice }) {
 		const roundUsdValue = (value) => {
 			return (value / usdPrice).toFixed(2);
 		};
-		if (usdValues) {
+		if (setUsdCurrency) {
 			let moneyUsd = {
 				physical: {
 					underC: roundUsdValue(currentMoney.physical.underC),
@@ -71,44 +55,44 @@ export default function Home({ usdValues, usdPrice }) {
 		}
 
 		//? Toggle profit value for showing or not
-		const profitBtn = document.getElementById("profit-btn");
+		const profitBtn = document.getElementById('profit-btn');
 		if (investedProfit) {
-			setTextInvested(" + ganancias");
-			profitBtn.classList.add("profit-btn-active");
+			setTextInvested(' + ganancias');
+			profitBtn.classList.add('profit-btn-active');
 		} else {
-			setTextInvested(" ! ganancias");
-			profitBtn.classList.remove("profit-btn-active");
+			setTextInvested(' ! ganancias');
+			profitBtn.classList.remove('profit-btn-active');
 		}
 
 		//? Toggle total money value for showing invested money or not
-		const totalBtn = document.getElementById("total-btn");
+		const totalBtn = document.getElementById('total-btn');
 		if (totalInvested) {
-			setTextTotal(" + invertido");
-			totalBtn.classList.add("total-btn-active");
+			setTextTotal(' + invertido');
+			totalBtn.classList.add('total-btn-active');
 		} else {
-			setTextTotal(" ! invertido");
-			totalBtn.classList.remove("total-btn-active");
+			setTextTotal(' ! invertido');
+			totalBtn.classList.remove('total-btn-active');
 		}
 
 		//? Set the section view width
-		const pageView = document.getElementById("page-view");
+		const pageView = document.getElementById('page-view');
 		const changeDisplay = () => {
 			setViewWidth(pageView.offsetWidth);
 		};
 		changeDisplay();
-		window.addEventListener("resize", changeDisplay);
+		window.addEventListener('resize', changeDisplay);
 
 		return () => {
-			window.removeEventListener("resize", changeDisplay);
+			window.removeEventListener('resize', changeDisplay);
 		};
-	}, [investedProfit, totalInvested, usdPrice, usdValues]);
+	}, [investedProfit, totalInvested, usdPrice, setUsdCurrency]);
 
 	return (
 		<main id="page-view">
 			<div className="row general-graph-container">
 				<div className="principal-sections-container col-md-6">
 					<div className="principal-sections-content section-graph">
-						<AreaGraph usdValues={usdValues} usdPrice={usdPrice} />
+						<AreaGraph usdCurrency={usdCurrency} usdPrice={usdPrice} />
 					</div>
 				</div>
 				<div className="principal-sections-container col-sm-12 col-md-6 ">
@@ -155,7 +139,7 @@ export default function Home({ usdValues, usdPrice }) {
 									investedProfit={investedProfit}
 									money={money}
 									viewWidth={viewWidth}
-									usdValues={usdValues}
+									usdCurrency={usdCurrency}
 								/>
 							</div>
 						</div>
@@ -163,9 +147,9 @@ export default function Home({ usdValues, usdPrice }) {
 				</div>
 			</div>
 			<div className="row general-graph-container">
-				<div className="principal-sections-container col-12" style={{ height: "100% " }}>
+				<div className="principal-sections-container col-12" style={{ height: '100% ' }}>
 					<div className="principal-sections-content section-graph">
-						<TableInformation usdValues={usdValues} usdPrice={usdPrice} />
+						<TableInformation usdCurrency={usdCurrency} usdPrice={usdPrice} />
 					</div>
 				</div>
 			</div>

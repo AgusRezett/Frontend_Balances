@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import differenceBy from "lodash/differenceBy";
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import differenceBy from 'lodash/differenceBy';
 // eslint-disable-next-line no-unused-vars
-import { Button, Modal, ModalBody, ModalHeader, Input } from "reactstrap";
-import DataTable from "react-data-table-component";
+import { Button, Modal, ModalBody, ModalHeader, Input } from 'reactstrap';
+import DataTable from 'react-data-table-component';
 
 // Data
-import MonthlyMoney from "../../../data/monthlyMoney.json";
+import MonthlyMoney from '../../../data/monthlyMoney.json';
 
 const actions = <Button key="add">Añadir</Button>;
 
@@ -14,7 +14,7 @@ const tableDataItems = MonthlyMoney;
 export default function RowToggle({ usdValues, usdPrice }) {
 	const [selectedRows, setSelectedRows] = useState([]);
 	const [toggleCleared, setToggleCleared] = useState(false);
-	const [data, setData] = useState(tableDataItems);
+	const [data, setData] = useState(MonthlyMoney);
 	const [columns, setColumns] = useState([]);
 
 	const handleRowSelected = useCallback((state) => {
@@ -25,12 +25,12 @@ export default function RowToggle({ usdValues, usdPrice }) {
 		const handleDelete = () => {
 			if (window.confirm(`Estás seguro que deseás eliminar: ${selectedRows.map((r) => r.date)}?`)) {
 				setToggleCleared(!toggleCleared);
-				setData(differenceBy(data, selectedRows, "date"));
+				setData(differenceBy(data, selectedRows, 'date'));
 			}
 		};
 
 		return (
-			<Button key="delete" onClick={handleDelete} style={{ backgroundColor: "red" }}>
+			<Button key="delete" onClick={handleDelete} style={{ backgroundColor: 'red' }}>
 				Eliminar
 			</Button>
 		);
@@ -38,7 +38,7 @@ export default function RowToggle({ usdValues, usdPrice }) {
 
 	useEffect(() => {
 		//? Get an array of all the json whitespace names
-		const jsonNames = ["fecha"].concat(
+		const jsonNames = ['fecha'].concat(
 			Object.keys(tableDataItems[0].physical).concat(Object.keys(tableDataItems[0].invested))
 		);
 
@@ -49,7 +49,7 @@ export default function RowToggle({ usdValues, usdPrice }) {
 		const physicalNames = Object.keys(tableDataItems[0].physical);
 		const columns = jsonNames.map((name, index) => ({
 			name: jsonNamesCapitalized[index],
-			selector: name === "fecha" ? name : physicalNames.includes(name) ? `physical.${name}` : `invested.${name}`,
+			selector: name === 'fecha' ? name : physicalNames.includes(name) ? `physical.${name}` : `invested.${name}`,
 			sortable: true,
 			center: true,
 		}));
@@ -58,6 +58,8 @@ export default function RowToggle({ usdValues, usdPrice }) {
 		const roundUsdValue = (value) => {
 			return (value / usdPrice).toFixed(2);
 		};
+
+		//console.log(usdValues);
 		if (usdValues) {
 			const tableDataItemsUsd = tableDataItems.map((item) => {
 				const newItem = { ...item };
@@ -73,22 +75,21 @@ export default function RowToggle({ usdValues, usdPrice }) {
 
 				newItem.physical = tempPhysical;
 				newItem.invested = tempInvested;
+
 				return newItem;
 			});
-			console.log(tableDataItemsUsd);
-			setData(tableDataItemsUsd);
+			//setData(tableDataItemsUsd);
 		} else {
 			//! It doesnt refresh the ARS values
-			console.log(MonthlyMoney);
-			setData(MonthlyMoney);
+			//setData(MonthlyMoney);
 		}
 	}, [usdPrice, usdValues]);
 
 	const paginationOptions = {
-		rowsPerPageText: "Filas por página:",
-		rangeSeparatorText: "de",
+		rowsPerPageText: 'Filas por página:',
+		rangeSeparatorText: 'de',
 		selectAllRowsItem: true,
-		selectAllRowsItemText: "Todos",
+		selectAllRowsItemText: 'Todos',
 	};
 
 	return (
